@@ -1,20 +1,146 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="home-screen" *ngIf="stage == 0">
+  <div class="banner">
+    <div class="nav">
+      <h1>Sawaari</h1>
+      <div class="user-icon">
+
+      </div>
+    </div>
+    <div class="header">
+      <h2>From</h2>
+      <h1>{{ origin }}</h1>
+      <h3>({{ originEta }} min away from this station)</h3>
+      <h2 (click)="setStage(4)">Choose other station →</h2>
+    </div>
+  </div>
+  <div class="locations">
+    <div class="destination-input">
+      <input type="text" placeholder="Where are you going?" (keyup)="randomizeDestinationSearch()">
+    </div>
+    <div class="search-results expanded">
+      <div class="search-result" (click)="selectDestination(address)" *ngFor="let address of listOfDestinations">
+        <div class="cirque">
+        </div>
+        <div class="text">
+            <h1>{{ address.addressLine1 }}</h1>
+            <h2>{{ address.addressLine2 }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="confirmation-screen" *ngIf="stage == 1">
+  <div class="banner short">
+      <div class="nav">
+        <h1>Sawaari</h1>
+        <div class="user-icon">
+        </div>
+      </div>
+  </div>
+  <div class="location-summary">
+    <h2>From:</h2>
+    <div class="display-box" (click)="setStage(0)">
+      <h1>{{ origin }}</h1>
+    </div>
+    <h2>To: </h2>
+    <div class="display-box" (click)="setStage(0)">
+      <h1>{{ destination.addressLine1 }}, {{ destination.addressLine2 }}</h1>
+    </div>
+    <hr>
+    <h1 class="section-header">Trip Overview</h1>
+    <table>
+      <tr>
+        <th>Trip Length</th>
+        <td>{{ tripLength }} km</td>
+      </tr>
+      <tr>
+        <th>Estimated Fare</th>
+        <td>Rs {{ estimatedFare }}</td>
+      </tr>
+      <tr>
+        <th>Trip Duration</th>
+        <td>{{ tripDuration }} min</td>
+      </tr>
+      <tr>
+        <th>Payment</th>
+        <td>VISA **1524</td>
+      </tr>
+    </table>
+    <button class="request" (click)="setStage(2)">Request a Sawaari</button>
+  </div>
+</div>
+<div class="loading-screen" *ngIf="stage === 2">
+    <div class="banner short">
+        <div class="nav">
+          <h1>Sawaari</h1>
+          <div class="user-icon" (click)="rickshawWalaFound()">
+          </div>
+        </div>
+    </div>
+    <div class="loader">
+      <h1>Finding your sawaari...</h1>
+      <h2>This might take a couple of minutes</h2>
+      <button class="cancel" (click)="setStage(1)">Cancel</button>
+    </div>
+</div>
+<div class="driver-status-screen" *ngIf="stage == 3">
+  <div class="banner">
+      <div class="nav">
+        <h1>Sawaari</h1>
+        <div class="user-icon">
+  
+        </div>
+      </div>
+      <div class="header">
+        <h1>Suresh</h1>
+        <h2>is on his way</h2>
+        <h3>4 min away from {{ origin }}</h3>
+      </div>
+    </div>
+    <div class="trip-overview">
+      <table>
+          <tr>
+            <th>Trip Length</th>
+            <td>{{ tripLength }} km</td>
+          </tr>
+          <tr>
+            <th>Estimated Fare</th>
+            <td>Rs {{ estimatedFare }}</td>
+          </tr>
+          <tr>
+            <th>Trip Duration</th>
+            <td>{{ tripDuration }} min</td>
+          </tr>
+          <tr>
+            <th>Payment</th>
+            <td>VISA **1524</td>
+          </tr>
+      </table>
+      <button class="cancel" (click)="setStage(1)">Cancel</button>
+    </div>
+</div>
+<div class="station-selector" *ngIf="stage == 4">
+    <div class="banner short">
+        <div class="nav">
+          <h1>Sawaari</h1>
+          <div class="user-icon">
+          </div>
+        </div>
+    </div>
+    <div class="stations">
+      <div class="search-results">
+        <div class="search-result" (click)="selectOriginStation(station)" *ngFor="let station of listOfStations">
+          <div class="cirque" [ngClass]="[station.color, 'cirque']">
+          </div>
+          <div class="text">
+              <h1>{{ station.name }}</h1>
+              <h2>{{ station.distance }} km</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
 

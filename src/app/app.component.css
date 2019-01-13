@@ -1,0 +1,275 @@
+
+.home-screen {
+    height: 100%;
+}
+
+/* .nav */
+.banner {
+    background-color:#2977f5;
+    color: #fff;
+    padding: 0 30px;
+    height: 320px;
+}
+
+.banner .nav {
+    padding: 2px;
+    height: 100px;
+    line-height: 100px;
+    position: relative;
+}
+
+.banner.short {
+    height: 100px;
+}
+
+.banner .nav h1 {
+    float: left;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.banner .nav .user-icon {
+    background-color: #ececec;
+    height: 40px;
+    width: 40px;
+    float: right;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: calc((100px - 40px)/2);
+}
+
+/* .header */
+.banner .header {
+    margin-top: 30px;
+    padding: 30px 0;
+}
+
+.banner .header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.banner .header h2 {
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+.banner .header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* locations */
+
+.locations {
+    background-color: #fff;
+    height: calc(100% - 320px);
+    padding: 10px;
+}
+
+.locations .destination-input {
+    background-color: #ececec;
+    font-size: 1.1rem;
+    height: 3rem;
+    line-height: 3rem;
+    border-radius: 3px;
+    padding: 0 10px;
+}
+
+.locations .destination-input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    font-size: 1.1rem;
+    height: 3rem;
+    line-height: 3rem;
+}
+
+.locations .destination-input input:focus {
+    outline: none;
+}
+
+.search-results {
+    overflow-y: auto;
+    width: 100%;
+    height: calc(100% - 3rem);
+}
+
+.search-results .search-result {
+    width: 100%;
+    height: 80px;
+    padding: 10px 0;
+    border-bottom: 1px solid #c7c7c7;
+    display: flex;
+    align-items: center;
+}
+
+.search-results .search-result .cirque {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #c7c7c7;
+    margin-right: 15px;
+}
+
+.search-results .search-result .text {
+    width: 70%;
+    display: inline-block;
+}
+
+.search-results .search-result h1 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #000;
+    font-weight: 400;
+}
+
+.search-results .search-result h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    color: #4b4a4a;
+}
+
+/** Screen 2 confirmation screen */
+
+.location-summary {
+    background-color: #fff;
+    padding: 10px;
+    color: #000
+}
+
+.location-summary .display-box {
+    background-color: #ececec;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    padding: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.location-summary .display-box h1 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.location-summary h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+table tr td {
+    padding: 10px;
+    text-align: right;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+table tr th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+table tr:last-of-type td, table tr:last-of-type th {
+    border-bottom: none;
+} 
+
+.location-summary h1.section-header {
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.location-summary hr {
+    opacity: 0.3;
+}
+
+button {
+    width: 100%;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+button.request {
+    background-color: #4b4a4a;
+}
+
+button.cancel {
+    margin-top: 25px;
+    background-color: #cb2626;
+}
+
+.loading-screen .loader {
+    width: 100%;
+    padding: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.loading-screen .loader h1 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.loading-screen .loader h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.trip-overview {
+    padding: 10px;
+}
+
+.station-selector {
+    height: 100%;
+}
+
+.stations {
+    padding: 10px;
+    height: calc(100% - 100px);
+    overflow-y: auto;
+    width: 100%;
+}
+
+.stations .search-results {
+    height: 100%;
+}
+
+.stations .search-result .cirque {
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+}
+
+.stations .search-result:last-of-type {
+    border-bottom: none;
+}
+
+.stations .cirque.magenta {
+    background: rgb(157, 51, 157) !important;
+}
+
+.stations .cirque.yellow {
+    background: rgb(223, 185, 33) !important;
+}
+
+.stations .cirque.pink {
+    background: rgb(227, 122, 211) !important;
+}
