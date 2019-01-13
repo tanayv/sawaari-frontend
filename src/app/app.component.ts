@@ -161,6 +161,11 @@ export class AppComponent {
     this.setStage(3);
   }
 
+  requestSawaari = () => {
+    this.setStage(2);
+    /* @todo add http request */
+  }
+
 
 
 }
